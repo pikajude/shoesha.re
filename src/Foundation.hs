@@ -11,6 +11,9 @@ import Yesod.Default.Util (addStaticContentExternal)
 import Network.HTTP.Conduit (Manager)
 import qualified Settings
 import Settings.Development (development)
+import Data.Maybe
+import Data.Text (Text)
+import Control.Monad (when)
 import qualified Database.Persist
 import Database.Persist.Sql (SqlPersistT)
 import Settings.StaticFiles
@@ -59,6 +62,8 @@ instance Yesod App where
         "config/client_session_key.aes"
 
     defaultLayout widget = do
+        lang <- lookupGetParam "lang"
+        when (isJust lang) . setLanguage $ fromJust lang
         master <- getYesod
         mmsg <- getMessage
 
@@ -68,11 +73,14 @@ instance Yesod App where
         -- value passed to hamletToRepHtml cannot be a widget, this allows
         -- you to use normal widget features in default-layout.
 
+        curRoute <- getCurrentRoute
+        let bodyClass = case curRoute of
+                Just HomeR -> "home" :: Text
+                _ -> "unknown"
+
         pc <- widgetToPageContent $ do
             $(combineStylesheets 'StaticR
-                [ css_normalize_css
-                , css_bootstrap_css
-                ])
+                [ css_normalize_css ])
             $(widgetFile "default-layout")
         giveUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 

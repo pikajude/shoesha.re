@@ -1,0 +1,5 @@
+nav {
+  height: 5px;
+  background-image: url(@{StaticR img_rainbow_gif});
+  border-bottom: 5px solid #d7d7d7;
+}

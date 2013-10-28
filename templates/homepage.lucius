@@ -1,6 +1,31 @@
-h1 {
-    text-align: center
+a, span { display: block; }
+
+a {
+  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 100;
+  color: #888;
+  font-size: 162.5%;
+  text-decoration: none;
+  padding: 187px 0;
+  -webkit-user-select: none;
+  width: 50%;
+  float: left;
 }
-h2##{aDomId} {
-    color: #990
+
+span {
+  font-weight: 600;
+  font-size: 215.38%;
+  color: black;
+  margin-top: -15px;
+}
+
+a:hover {
+  background: #eee;
+}
+
+a:active {
+  background: #ccc;
 }

@@ -21,6 +21,8 @@ library
                      Settings.Development
                      Handler.Home
 
+    hs-source-dirs:  src
+
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
         ghc-options:   -Wall -O0
