@@ -1,0 +1,24 @@
+Default: &defaults
+  user: shoeshare_dev
+  password: shoeshare_dev
+  host: localhost
+  port: 5432
+  database: shoeshare_dev
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: shoeshare_test
+  <<: *defaults
+
+Staging:
+  database: shoeshare_staging
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: shoeshare_production
+  poolsize: 100
+  <<: *defaults
