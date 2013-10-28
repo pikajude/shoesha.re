@@ -1,0 +1,17 @@
+(function() {
+  'use strict';
+  $("[data-confirm]").bind("click", function(e) {
+    e.preventDefault();
+    if (confirm($(this).data("confirm"))) {
+      $.ajax($(this).attr("href"), {
+        method: "delete",
+        error: function (xhr) {
+          alert(xhr.responseJSON.error);
+        },
+        success: function () {
+          window.location.href = "@{HomeR}";
+        }
+      })
+    }
+  })
+}());

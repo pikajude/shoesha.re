@@ -1,26 +1,24 @@
 $newline never
 $doctype 5
 <html .no-js>
-    <head>
-        <meta charset="UTF-8">
+  <head>
+    <title>#{pageTitle pc}
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
 
-        <title>#{pageTitle pc}
-        <meta name="description" content="">
-        <meta name="author" content="">
+    ^{pageHead pc}
 
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+    \<!--[if lt IE 9]>
+    \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    \<![endif]-->
 
-        ^{pageHead pc}
+    <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
 
-        \<!--[if lt IE 9]>
-        \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        \<![endif]-->
-
-        <script>
-          document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
-    <body .#{bodyClass}>
-        <div class="container">
-            <header>
-              <nav>
-            <div id="main" role="main">
-              ^{pageBody pc}
+  <body .#{bodyClass}>
+    <div class="container">
+      <header>
+        <nav>
+      <div id="main" role="main">
+        ^{pageBody pc}
