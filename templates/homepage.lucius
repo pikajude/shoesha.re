@@ -1,31 +1,36 @@
-a, span { display: block; }
-
-a {
-  font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 100;
-  color: #888;
-  font-size: 162.5%;
-  text-decoration: none;
-  padding: 187px 0;
-  -webkit-user-select: none;
-  width: 50%;
-  float: left;
-}
-
-span {
-  font-weight: 600;
-  font-size: 215.38%;
-  color: black;
-  margin-top: -15px;
-}
-
-a:hover {
+body {
   background: #eee;
 }
 
-a:active {
-  background: #ccc;
+a {
+  text-align: center;
+  display: block;
+  padding: 250px 0;
+  color: #888;
+  font-size: 185.71%;
+  font-weight: 200;
+  -webkit-user-select: none;
+
+  strong {
+    font-size: 215.38%;
+    color: black;
+    display: block;
+    margin-top: 12px;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: white;
+  }
+}
+
+#decision {
+  background: #eee;
+}
+
+.silver {
+  background: #ddd;
+  padding: 80px 0;
+  border: 1px solid #ccc;
+  border-width: 1px 0;
 }

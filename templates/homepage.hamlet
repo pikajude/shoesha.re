@@ -1,8 +1,15 @@
-<section .cop>
-  <a href="#">
-    _{MsgIWantTo}
-    <span>_{MsgCop}
-<section .share>
-  <a href="#">
-    _{MsgIWantTo}
-    <span>_{MsgShare}
+<div .jumbotron .masthead #decision>
+  <div .container>
+    <div .row>
+      <a #cop .span6 href="#">
+        _{MsgIWantTo}
+        <strong>_{MsgCop}
+      <a #share .span6 href="#">
+        _{MsgIWantTo}
+        <strong>_{MsgShare}
+<div .silver>
+  <div .container>
+    <div .row>
+      <div .span4>stuff
+      <div .span4>stuff
+      <div .span4>stuff

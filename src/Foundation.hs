@@ -19,9 +19,11 @@ import Database.Persist.Sql (SqlPersistT)
 import Settings.StaticFiles
 import Settings (widgetFile, Extra (..))
 import Model
+import Model.User
 import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
 import System.Log.FastLogger (Logger)
+import Yesod.Auth.HashDB hiding (UniqueUser, UserId)
 
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -75,8 +77,11 @@ instance Yesod App where
 
         pc <- widgetToPageContent $ do
             addScriptRemote "//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"
+            addScript $ StaticR js_bootstrap_js
             $(combineStylesheets 'StaticR
-                [ css_normalize_css ])
+                [ css_normalize_css
+                , css_bootstrap_css
+                , css_bootstrap_responsive_css ])
             $(widgetFile "default-layout")
 
         curRoute <- getCurrentRoute
@@ -132,15 +137,10 @@ instance YesodAuth App where
     -- Where to send a user after logout
     logoutDest _ = HomeR
 
-    getAuthId creds = runDB $ do
-        x <- getBy $ UniqueUser $ credsIdent creds
-        case x of
-            Just (Entity uid _) -> return $ Just uid
-            Nothing -> do
-                fmap Just $ insert $ User (credsIdent creds) Nothing
+    getAuthId = getAuthIdHashDB AuthR (Just . UniqueUser)
 
     -- You can add other plugins like BrowserID, email or OAuth here
-    authPlugins _ = [authBrowserId def, authGoogleEmail]
+    authPlugins _ = [authHashDB (Just . UniqueUser)]
 
     authHttpManager = httpManager
 

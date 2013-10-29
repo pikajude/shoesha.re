@@ -16,6 +16,7 @@ library
                      Foundation
                      Import
                      Model
+                     Model.User
                      Settings
                      Settings.StaticFiles
                      Settings.Development

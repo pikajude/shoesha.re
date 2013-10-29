@@ -17,8 +17,6 @@ $doctype 5
     <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
 
   <body .#{bodyClass}>
-    <div class="container">
-      <header>
-        <nav>
-      <div id="main" role="main">
-        ^{pageBody pc}
+    <div .navbar .navbar-fixed-top>
+      <nav>
+    ^{pageBody pc}
