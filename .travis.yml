@@ -1,0 +1,15 @@
+language: haskell
+before_install:
+  - travis/cabal-apt-install $mode
+  - cabal install yesod-bin
+  - sudo apt-get -y install hlint
+
+install:
+  - cabal configure $mode
+
+script:
+  - hlint -c . --ignore="Parse error"
+  - yesod test
+
+env:
+  - mode="--enable-tests -ferror"
