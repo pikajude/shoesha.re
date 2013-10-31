@@ -1,4 +1,9 @@
 language: haskell
+cache:
+  directories:
+    - $HOME/.cabal
+    - $HOME/.ghc
+
 before_install:
   - cabal install $mode --only-dependencies
   - cabal install yesod-bin
