@@ -1,6 +1,6 @@
 language: haskell
 before_install:
-  - travis/cabal-apt-install $mode
+  - cabal install $mode --only-dependencies
   - cabal install yesod-bin
   - sudo apt-get -y install hlint
 
