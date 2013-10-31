@@ -5,8 +5,8 @@ cache:
     - $HOME/.ghc
 
 before_script:
-  - createuser shoeshare_dev
-  - createdb shoeshare_dev -U shoeshare_dev
+  - createuser -s shoeshare_dev
+  - createdb shoeshare_test -U shoeshare_dev
 
 before_install:
   - cabal install $mode --only-dependencies
