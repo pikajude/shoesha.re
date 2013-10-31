@@ -1,9 +1,3 @@
 nav {
-  height: 7px;
-  background-image: url(@{StaticR img_rainbow_gif});
-  border-bottom: 7px solid #d7d7d7;
-
-  &:hover {
-    border-bottom-width: 60px;
-  }
+  background: #fff url(@{StaticR img_rainbow_gif}) repeat-x left top;
 }

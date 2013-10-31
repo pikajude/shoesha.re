@@ -7,3 +7,13 @@ User
   UniqueUser ident
   UniqueEmail email
   deriving Typeable
+
+PairOfShoes
+  category ShoeCategory
+  quality ShoeQuality
+  brand Text
+  name Text
+  owner UserId
+  estimatedPrice Centi
+  assessedPrice Centi
+  universalSize Int

@@ -16,11 +16,14 @@ library
                      Foundation
                      Import
                      Model
+                     Model.Types
                      Model.User
                      Settings
                      Settings.StaticFiles
                      Settings.Development
                      Handler.Home
+                     Handler.Cop
+                     Handler.Share
 
     hs-source-dirs:  src
 

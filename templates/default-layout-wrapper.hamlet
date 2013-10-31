@@ -19,4 +19,5 @@ $doctype 5
   <body .#{bodyClass}>
     <div .navbar .navbar-fixed-top>
       <nav>
+        <a href=@{HomeR}>shoesha.re
     ^{pageBody pc}

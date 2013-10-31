@@ -1,15 +1,10 @@
-<div .jumbotron .masthead #decision>
+<div .jumbotron .masthead>
   <div .container>
     <div .row>
-      <a #cop .span6 href="#">
-        _{MsgIWantTo}
-        <strong>_{MsgCop}
-      <a #share .span6 href="#">
-        _{MsgIWantTo}
-        <strong>_{MsgShare}
-<div .silver>
+      <a #cop .span6 .action-button href=@{CopR}>_{MsgCop}
+      <a #share .span6 .action-button href=@{ShareR}>_{MsgShare}
+<div .explanation>
   <div .container>
     <div .row>
-      <div .span4>stuff
-      <div .span4>stuff
-      <div .span4>stuff
+      <img src=@{StaticR img_shoes_png} .pull-right width=250>
+      <p>stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here stuff goes here 
