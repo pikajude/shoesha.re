@@ -79,7 +79,7 @@ instance Yesod App where
             $(combineStylesheets 'StaticR
                 [ css_normalize_css
                 , css_bootstrap_css
-                , css_bootstrap_responsive_css ])
+                , css_bootstrap_theme_css ])
             $(widgetFile "default-layout")
 
         curRoute <- getCurrentRoute

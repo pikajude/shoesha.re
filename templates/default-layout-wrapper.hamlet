@@ -2,7 +2,7 @@ $newline never
 $doctype 5
 <html .no-js>
   <head>
-    <title>#{pageTitle pc}
+    <title>shoesha.re | #{pageTitle pc}
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">

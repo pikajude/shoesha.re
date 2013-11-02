@@ -1,11 +1,9 @@
 .jumbotron {
-  background: purple;
-}
+  background: #66B8D1;
+  overflow: hidden;
+  padding: 150px 0 30px;
 
-.action-button {
-  padding: 180px 0;
-}
-
-.explanation {
-  background: #eee;
+  h1 {
+    color: white;
+  }
 }
