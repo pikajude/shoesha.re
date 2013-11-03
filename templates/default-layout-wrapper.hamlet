@@ -2,17 +2,13 @@ $newline never
 $doctype 5
 <html .no-js>
   <head>
-    <title>shoesha.re | #{pageTitle pc}
+    <title>shoesha.re » #{pageTitle pc}
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
 
     ^{pageHead pc}
-
-    \<!--[if lt IE 9]>
-    \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    \<![endif]-->
 
     <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
 

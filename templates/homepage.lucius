@@ -1,9 +1,30 @@
 .jumbotron {
-  background: #66B8D1;
+  background: #66B8D1 url(@{StaticR img_shoes_cropped_jpg}) no-repeat;
   overflow: hidden;
-  padding: 150px 0 30px;
+  padding: 200px 0 30px;
+  background-size: auto 500px;
+  background-position: 0 -110px;
 
   h1 {
     color: white;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .jumbotron {
+    background-size: auto 437px;
+    background-position: 0 -114px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .jumbotron {
+    background-size: auto 410px;
+    background-position: 0 -180px;
+    padding: 20px 0;
+
+    h1 {
+      text-align: center;
+    }
   }
 }
