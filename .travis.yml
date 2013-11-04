@@ -1,7 +1,7 @@
 language: haskell
 cache:
   directories:
-    - $HOME/.cabal
+    - $HOME/.cabal/lib
     - $HOME/.ghc
 
 before_script:
