@@ -1,27 +1,48 @@
+body {
+  background: #222;
+}
+
 .jumbotron {
-  background: #66B8D1 url(@{StaticR img_shoes_cropped_jpg}) no-repeat;
+  background: url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
   overflow: hidden;
-  padding: 200px 0 30px;
-  background-size: auto 500px;
-  background-position: 0 -110px;
+  padding: 400px 0;
+  background-size: auto 1100px;
+  margin-bottom: 0;
 
   h1 {
     color: white;
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding-bottom: 8px;
+    text-shadow: 0 3px 0 rgba(0,0,0,0.2);
+
+    a {
+      font-size: 50%;
+      vertical-align: middle;
+      color: yellow;
+    }
   }
+}
+
+.subt {
+  background: #fafafa;
+  color: #777;
+  border-top: 1px solid white;
+  padding: 15px;
 }
 
 @media screen and (max-width: 991px) {
   .jumbotron {
-    background-size: auto 437px;
-    background-position: 0 -114px;
+    padding: 350px 0;
+    background-size: auto 1000px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .jumbotron {
-    background-size: auto 410px;
+    background-size: auto 700px;
     background-position: 0 -180px;
-    padding: 20px 0;
+    padding: 200px 0;
 
     h1 {
       text-align: center;

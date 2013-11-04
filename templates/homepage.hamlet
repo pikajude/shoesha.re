@@ -1,4 +1,7 @@
 <div .jumbotron>
   <div .container>
     <div .row>
-      <h1 .col-md-6>find treats for your feet.
+      <h1 .col-md-6>
+        <span>
+          find treats for your feet.
+          <a href=@{CopR}>join shoesha.re
