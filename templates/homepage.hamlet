@@ -1,7 +1,8 @@
 <div .jumbotron>
   <div .container>
     <div .row>
-      <h1 .col-md-6>
+      <h1 .col-md-5 .col-md-offset-1>
         <span>
           find treats for your feet.
+          <br>
           <a href=@{CopR}>join shoesha.re

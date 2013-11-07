@@ -13,8 +13,8 @@ body {
     color: white;
     background: rgba(0,0,0,0.2);
     border-radius: 4px;
-    padding-bottom: 8px;
-    text-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    padding: 8px 15px;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.2);
 
     a {
       font-size: 50%;
@@ -41,11 +41,18 @@ body {
 @media screen and (max-width: 767px) {
   .jumbotron {
     background-size: auto 700px;
-    background-position: 0 -180px;
-    padding: 200px 0;
+    background-position: 0 -280px;
+    padding: 100px 0;
 
     h1 {
       text-align: center;
     }
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .jumbotron {
+    background: url(@{StaticR img_shoes_tiny_jpg}) no-repeat left bottom;
+    background-size: 600px auto;
   }
 }

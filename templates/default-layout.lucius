@@ -1,5 +1,5 @@
 nav {
-  background: rgba(255,255,255,0.5) url(@{StaticR img_rainbow_gif}) repeat-x left top;
+  background: url(@{StaticR img_rainbow_gif}) repeat-x left top;
   overflow: hidden;
   padding: 15px 0 0;
   height: 0px;
