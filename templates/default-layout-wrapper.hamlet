@@ -17,3 +17,6 @@ $doctype 5
       <nav>
         <a href=@{HomeR}>shoesha.re
     ^{pageBody pc}
+    <footer>
+      $with ex <- extraCopyright extra
+        <p>#{ex}

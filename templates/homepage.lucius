@@ -1,13 +1,14 @@
 body {
-  background: #222;
+  background: #f0f0f0;
 }
 
 .jumbotron {
-  background: url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
+  background: #35322D url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
   overflow: hidden;
-  padding: 400px 0;
+  padding: 300px 0;
   background-size: auto 1100px;
   margin-bottom: 0;
+  border-bottom: 1px solid white;
 
   h1 {
     color: white;
@@ -18,9 +19,17 @@ body {
 
     a {
       font-size: 50%;
-      vertical-align: middle;
       color: yellow;
+      display: block;
+      line-height: 1.5em;
     }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .jumbotron {
+    background: #35322D url(@{StaticR img_shoes_cropped_2x_jpg}) no-repeat left bottom;
+    background-size: auto 1100px;
   }
 }
 
@@ -33,7 +42,7 @@ body {
 
 @media screen and (max-width: 991px) {
   .jumbotron {
-    padding: 350px 0;
+    padding: 280px 0;
     background-size: auto 1000px;
   }
 }
@@ -52,7 +61,15 @@ body {
 
 @media screen and (max-width: 568px) {
   .jumbotron {
-    background: url(@{StaticR img_shoes_tiny_jpg}) no-repeat left bottom;
+    background: #35322D url(@{StaticR img_shoes_tiny_jpg}) no-repeat left bottom;
+    background-size: 600px auto;
+  }
+}
+
+@media screen and (max-width: 568px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (max-width: 568px) and (min-resolution: 192dpi) {
+  .jumbotron {
+    background: #35322D url(@{StaticR img_shoes_tiny_2x_jpg}) no-repeat left bottom;
     background-size: 600px auto;
   }
 }

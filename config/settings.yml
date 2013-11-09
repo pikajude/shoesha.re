@@ -1,8 +1,8 @@
 Default: &defaults
   host: "*4" # any IPv4 host
   port: 3000
-  approot: "http://192.168.1.92:3000"
-  copyright: Insert copyright statement here
+  approot: "http://test.joelt.io"
+  copyright: ©2013 shoeshare inc.
   #analytics: UA-YOURCODE
 
 Development:

@@ -66,6 +66,7 @@ instance Yesod App where
         when (isJust lang) . setLanguage $ fromJust lang
         master <- getYesod
         mmsg <- getMessage
+        extra <- getExtra
 
         -- We break up the default layout into two components:
         -- default-layout is the contents of the body tag, and
