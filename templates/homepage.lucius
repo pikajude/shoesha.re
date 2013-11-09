@@ -1,14 +1,10 @@
-body {
-  background: #f0f0f0;
-}
-
 .jumbotron {
   background: #35322D url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
   overflow: hidden;
   padding: 300px 0;
   background-size: auto 1100px;
   margin-bottom: 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #333;
 
   h1 {
     color: white;

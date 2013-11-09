@@ -18,5 +18,7 @@ $doctype 5
         <a href=@{HomeR}>shoesha.re
     ^{pageBody pc}
     <footer>
-      $with ex <- extraCopyright extra
-        <p>#{ex}
+      <div .container>
+        <p .pull-right>
+          <a href=# id=to-top>to top ↑
+        <p>#{extraCopyright extra}
