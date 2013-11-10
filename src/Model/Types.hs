@@ -1,7 +1,14 @@
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+
 module Model.Types where
 
+import Control.Arrow
+import Data.ISO3166_CountryCodes
 import Database.Persist.TH
+import Data.Text (Text, pack)
 import Prelude
+
+derivePersistField "CountryCode"
 
 data PuddingType = AlmondJelly | Ashure | Asida | BananaPudding | BánhChuối
                  | Bebinca | BlackPudding | Blancmange | Blodpalt | BreadAndButterPudding

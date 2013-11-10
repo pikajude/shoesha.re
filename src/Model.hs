@@ -4,6 +4,7 @@ import Prelude
 import Yesod
 import Data.Text (Text)
 import Data.Fixed
+import Data.ISO3166_CountryCodes
 import Database.Persist.Quasi
 import Data.Typeable (Typeable)
 import Model.Types

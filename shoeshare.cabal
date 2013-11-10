@@ -77,6 +77,7 @@ library
                  , monad-logger                  >= 0.3
                  , fast-logger                   >= 0.3
                  , SHA
+                 , iso3166-country-codes
 
 executable         shoeshare
     if flag(library-only)

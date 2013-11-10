@@ -2,7 +2,7 @@
   overflow: visible !important;
 }
 
-form {
+.jumbotron .container form {
   border-radius: 4px;
   padding: 15px;
   background-color: white;
@@ -59,7 +59,20 @@ form {
   }
 
   .bootstrap-select {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .jumbotron form {
+    .pudding-dropdown {
+      padding-right: 7px;
+    }
+
+    .country-dropdown {
+      padding-left: 7px;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ nav {
 .jumbotron {
   background: #35322D url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
   overflow: hidden;
-  padding: 250px 0;
+  padding: 300px 0 200px;
   background-size: auto 1100px;
   margin-bottom: 0;
   border-bottom: 1px solid white;
@@ -27,7 +27,7 @@ nav {
 
 @media screen and (max-width: 991px) {
   .jumbotron {
-    padding: 220px 0;
+    padding: 250px 0 190px;
     background-size: auto 1000px;
   }
 }
