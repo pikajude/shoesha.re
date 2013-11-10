@@ -1,19 +1,10 @@
 <h2>Join shoesha.re
-<label for=email .sr-only>Email
-<input type=email .form-control #email placeholder=Email required autofocus>
-<label for=password .sr-only>Password
-<input type=password .form-control #password placeholder=Password required>
-<label for=password-confirm .sr-only>Password again
-<input type=password .form-control #password-confirm placeholder="Password (again)" required>
-<label for=display-name .sr-only>Username
-<input type=text .form-control #display-name placeholder=Username required>
-<p .aside>can't have spaces!
-<div .btn-group>
-  <button type=button .btn .btn-primary .dropdown-toggle data-toggle=dropdown>
-    Favorite pudding flavor
-    <span .caret>
-  <ul .dropdown-menu role=menu>
-    <li>
-      <a href=#>Chocolate
-      <a href=#>Vanilla
-      <a href=#>Tapioca
+<label for=#{fvId emailView} .sr-only>^{fvLabel emailView}
+^{fvInput emailView}
+<label for=#{fvId passView} .sr-only>^{fvLabel passView}
+^{fvInput passView}
+<label for=#{fvId passConfirmView} .sr-only>^{fvLabel passConfirmView}
+^{fvInput passConfirmView}
+<label for=#{fvId usernameView} .sr-only>^{fvLabel usernameView}
+^{fvInput usernameView}
+^{fvInput puddingView}

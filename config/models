@@ -3,7 +3,7 @@ User
   ident Text
   password Text
   salt Text
-  verkey Text
+  pudding PuddingType
   UniqueUser ident
   UniqueEmail email
   deriving Typeable

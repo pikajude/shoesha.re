@@ -1,0 +1,11 @@
+(function() {
+  $(document).ready(function(){
+    $("##{rawJS (fvId usernameView)}").bind("input", function (e) {
+      $(this)[(/\s/.test($(this).val()) ? "add" : "remove") + "Class"]("invalid");
+    });
+  });
+
+  $("select").selectpicker({
+    title: "foobar"
+  });
+}());

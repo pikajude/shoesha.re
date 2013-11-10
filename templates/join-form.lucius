@@ -1,3 +1,7 @@
+.jumbotron {
+  overflow: visible !important;
+}
+
 form {
   border-radius: 4px;
   padding: 15px;
@@ -20,18 +24,18 @@ form {
     }
   }
 
-  #email {
+  ##{fvId emailView} {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  #password {
+  ##{fvId passView} {
     margin-bottom: -1px;
     border-radius: 0;
   }
 
-  #password-confirm {
+  ##{fvId passConfirmView} {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 10px;
@@ -47,10 +51,8 @@ form {
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
   }
 
-  .aside {
-    font-size: 60%;
-    text-align: right;
-    color: #555;
+  .bootstrap-select {
+    margin-bottom: 0 !important;
   }
 }
 

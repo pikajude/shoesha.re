@@ -77,10 +77,12 @@ instance Yesod App where
         pc <- widgetToPageContent $ do
             addScriptRemote "//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"
             addScript $ StaticR js_bootstrap_js
+            addScript $ StaticR js_bootstrap_select_js
             addScript $ StaticR js_application_js
             $(combineStylesheets 'StaticR
                 [ css_normalize_css
-                , css_bootstrap_css ])
+                , css_bootstrap_css
+                , css_bootstrap_select_css ])
                 -- , css_bootstrap_theme_css ])
             $(widgetFile "default-layout")
 

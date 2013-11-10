@@ -27,7 +27,7 @@ nav {
 
 @media screen and (max-width: 991px) {
   .jumbotron {
-    padding: 280px 0;
+    padding: 220px 0;
     background-size: auto 1000px;
   }
 }
