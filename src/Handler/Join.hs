@@ -28,7 +28,13 @@ postJoinR :: Handler Html
 postJoinR = do
     ((res, widget), enctype) <- runFormPost joinForm
     case res of
-        FormSuccess person -> defaultLayout [whamlet|<p>#{show person}|]
+        FormSuccess person -> defaultLayout $ do
+            setTitle "congrats"
+            [whamlet|<p>#{show newPerson}|]
+            where
+                concatted = encodeUtf8 $ userPassword person <> userSalt person
+                newPassword = T.pack . showDigest . sha1 $ B.fromStrict concatted
+                newPerson = person { userPassword = newPassword }
         _ -> defaultLayout $ do
            setTitle "try again"
            $(widgetFile "join")
@@ -36,15 +42,14 @@ postJoinR = do
 joinForm :: Form User
 joinForm ex = do
     (emailResult, emailView) <- mreq emailField (formControlAutofocus "Email") Nothing
-    (passResult, passView) <- mreq passwordField (formControl "Password") Nothing
-    (passConfirmResult, passConfirmView) <- mreq (checkBool ((>= 8) . T.length) ("Too short! (<8 characters)" :: Text) passwordField) (formControl "Password (again)") Nothing
+    (passResult, passView) <- mreq passwordConfirmField (formControl "Password") Nothing
     (usernameResult, usernameView) <- mreq (checkBool (not . T.any isSpace) ("Spaces not allowed!" :: Text) textField) (formControl "Username (no spaces)") Nothing
     let selectOpts = "" { fsAttrs =
                             [ ("data-style", "btn-success")
                             , ("data-live-search", "true")
                             ] }
     (puddingResult, puddingView) <- mreq (selectField defaultOptionsEnum) selectOpts Nothing
-    bytes <- liftIO $ withBinaryFile "/dev/urandom" ReadMode (fmap (decodeUtf8 . B.toStrict . bytestringDigest . sha1) . flip B.hGet 36)
+    bytes <- liftIO $ withBinaryFile "/dev/urandom" ReadMode (fmap (T.pack . showDigest . sha1) . flip B.hGet 36)
     let user = User
             <$> emailResult
             <*> usernameResult
@@ -62,3 +67,19 @@ joinForm ex = do
                    }
         defaultOptionsEnum = fmap (prepend (Option "Favorite pudding" VanillaPudding "no pudding")) optionsEnum
             where prepend m (OptionList a b) = OptionList (m:a) b
+
+passwordConfirmField :: Monad m => Field m Text
+passwordConfirmField = Field
+    { fieldParse = \vals _ -> case vals of
+        [x, y] | x == y -> return $ Right (Just x)
+               | otherwise -> return $ Left "Passwords don't match"
+        [] -> return $ Right Nothing
+        _ -> return $ Left "Incorrect number of results"
+    , fieldView = \id' name attrs val isReq -> [whamlet|
+        <label for=#{id'} .sr-only>Password
+        <input ##{id'} name=#{name} *{attrs} type=password :isReq:required>
+        <label for=#{id'}-confirm .sr-only>Password (again)
+        <input ##{id'}-confirm name=#{name} *{attrs} placeholder="Password (again)" type=password :isReq:required>
+      |]
+    , fieldEnctype = UrlEncoded
+    }
