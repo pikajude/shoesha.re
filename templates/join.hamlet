@@ -1,5 +1,5 @@
 <div .jumbotron>
   <div .container>
-    <form role=form method=post action=@{JoinR} enctype=#{enctype}>
+    <form .pill role=form method=post action=@{JoinR} enctype=#{enctype}>
       ^{widget}
-      <input type=submit .btn .btn-success value=Submit>
+      <input type=submit .btn .btn-success value="Send it">

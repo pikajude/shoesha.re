@@ -1,0 +1,8 @@
+<div .jumbotron>
+  <div .container>
+    <div .pill>
+      <h2>Welcome to shoesha.re.
+      <p>
+        We've sent an email to
+        <strong>#{e}
+        with a verification link. Once you've verified your account, you can start sharing shoes!

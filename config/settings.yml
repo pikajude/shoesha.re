@@ -2,7 +2,7 @@ Default: &defaults
   host: "*4" # any IPv4 host
   port: 3000
   approot: "http://localhost:3000"
-  copyright: ©2013 shoeshare inc.
+  copyright: ©2013 shoesha.re inc
   #analytics: UA-YOURCODE
 
 Development:

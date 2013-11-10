@@ -1,0 +1,5 @@
+body .jumbotron .pill p {
+  font-size: 70%;
+  margin-bottom: 0;
+  color: #333;
+}

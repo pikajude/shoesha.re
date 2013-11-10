@@ -29,11 +29,12 @@ postJoinR :: Handler Html
 postJoinR = do
     ((res, widget), enctype) <- runFormPost joinForm
     case res of
-        FormSuccess person -> defaultLayout $ do
-            setTitle "congrats"
-            [whamlet|<p>#{show newPerson}|]
+        FormSuccess person -> do
+            _ <- runDB (insert newPerson)
+            setSession "email" (userEmail newPerson)
+            redirect WelcomeR
             where
-                concatted = encodeUtf8 $ userPassword person <> userSalt person
+                concatted = encodeUtf8 $ userSalt person <> userPassword person
                 newPassword = T.pack . showDigest . sha1 $ B.fromStrict concatted
                 newPerson = person { userPassword = newPassword }
         _ -> defaultLayout $ do
@@ -64,20 +65,21 @@ joinForm ex = do
         mreq (selectField countryOptions)
              selectOpts
              Nothing
-    bytes <- liftIO $ withBinaryFile "/dev/urandom" ReadMode
-                (fmap (T.pack . showDigest . sha1) . flip B.hGet 36)
+    (salt, verkey) <- liftIO $ withBinaryFile "/dev/urandom" ReadMode $ \h ->
+                join (liftM2 (,)) . fmap (T.pack . showDigest . sha1) $ B.hGet h 36
 
     let user = User <$> emailResult
                     <*> usernameResult
                     <*> passResult
-                    <*> pure bytes
+                    <*> pure salt
                     <*> puddingResult
                     <*> countryResult
+                    <*> pure verkey
     return (user, $(widgetFile "join-form"))
 
     where
         selectOpts = "" { fsAttrs =
-                            [ ("data-style", "btn-success")
+                            [ ("data-style", "btn-default")
                             , ("data-live-search", "true")
                             ] }
         puddings = map (pack . show &&& id) [minBound..maxBound :: PuddingType]

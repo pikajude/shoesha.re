@@ -1,4 +1,4 @@
-<h2>Request an invite
+<h2>Join shoesha.re
 $maybe errs <- fvErrors emailView
   <p .alert .alert-danger>
     <strong>Email:
@@ -16,12 +16,12 @@ $maybe errs <- fvErrors usernameView
 <label for=#{fvId usernameView} .sr-only>^{fvLabel usernameView}
 ^{fvInput usernameView}
 <div .row>
-  <div .col-md-6 .pudding-dropdown>
-    $maybe _ <- fvErrors puddingView
-      <p .alert .alert-danger>Please pick a pudding.
-    ^{fvInput puddingView}
   <div .col-md-6 .country-dropdown>
     $maybe _ <- fvErrors countryView
       <p .alert .alert-danger>Please pick a country.
     ^{fvInput countryView}
+  <div .col-md-6 .pudding-dropdown>
+    $maybe _ <- fvErrors puddingView
+      <p .alert .alert-danger>Please pick a pudding.
+    ^{fvInput puddingView}
 #{ex}

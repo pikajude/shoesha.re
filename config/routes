@@ -9,3 +9,4 @@
 /share ShareR GET
 
 /join JoinR GET POST
+/welcome WelcomeR GET

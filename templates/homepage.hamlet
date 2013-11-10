@@ -4,4 +4,4 @@
       <h1 .col-md-5 .col-md-offset-1>
         find treats for your feet.
         <span>
-          <a href=@{JoinR}>request an invitation
+          <a href=@{JoinR}>join shoesha.re

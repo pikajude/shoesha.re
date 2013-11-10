@@ -5,6 +5,7 @@ User
   salt Text
   pudding PuddingType
   country CountryCode
+  verkey Text
   UniqueUser ident
   UniqueEmail email
   deriving Typeable Show

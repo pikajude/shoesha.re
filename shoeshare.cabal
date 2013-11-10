@@ -14,17 +14,18 @@ Flag library-only
 library
     exposed-modules: Application
                      Foundation
+                     Handler.Cop
+                     Handler.Home
+                     Handler.Join
+                     Handler.Share
+                     Handler.Welcome
                      Import
                      Model
                      Model.Types
                      Model.User
                      Settings
-                     Settings.StaticFiles
                      Settings.Development
-                     Handler.Home
-                     Handler.Join
-                     Handler.Cop
-                     Handler.Share
+                     Settings.StaticFiles
 
     hs-source-dirs:  src
 
