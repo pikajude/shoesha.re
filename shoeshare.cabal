@@ -76,6 +76,7 @@ library
                  , conduit                       >= 1.0
                  , monad-logger                  >= 0.3
                  , fast-logger                   >= 0.3
+                 , SHA
 
 executable         shoeshare
     if flag(library-only)

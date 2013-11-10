@@ -6,7 +6,7 @@ User
   pudding PuddingType
   UniqueUser ident
   UniqueEmail email
-  deriving Typeable
+  deriving Typeable Show
 
 PairOfShoes
   category ShoeCategory

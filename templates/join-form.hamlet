@@ -1,10 +1,27 @@
 <h2>Join shoesha.re
+$maybe errs <- fvErrors emailView
+  <p .alert .alert-danger>
+    <strong>Email:
+    ^{errs}
+$maybe errs <- fvErrors passView
+  <p .alert .alert-danger>
+    <strong>Password:
+    ^{errs}
+$maybe errs <- fvErrors passConfirmView
+  <p .alert .alert-danger>
+    <strong>Password:
+    ^{errs}
 <label for=#{fvId emailView} .sr-only>^{fvLabel emailView}
 ^{fvInput emailView}
 <label for=#{fvId passView} .sr-only>^{fvLabel passView}
 ^{fvInput passView}
 <label for=#{fvId passConfirmView} .sr-only>^{fvLabel passConfirmView}
 ^{fvInput passConfirmView}
+$maybe errs <- fvErrors usernameView
+  <p .alert .alert-danger>^{errs}
 <label for=#{fvId usernameView} .sr-only>^{fvLabel usernameView}
 ^{fvInput usernameView}
+$maybe _ <- fvErrors puddingView
+  <p .alert .alert-danger>Invalid pudding choice.
 ^{fvInput puddingView}
+#{ex}

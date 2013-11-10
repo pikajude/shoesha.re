@@ -24,6 +24,13 @@ form {
     }
   }
 
+  .alert-danger {
+    margin-bottom: 5px !important;
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 8px;
+  }
+
   ##{fvId emailView} {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
