@@ -1,0 +1,73 @@
+form {
+  border-radius: 4px;
+  padding: 15px;
+  background-color: white;
+  background-color: rgba(255,255,255,0.9);
+  max-width: 420px;
+  margin: 20px auto;
+
+  h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 80%;
+  }
+
+  .form-control {
+    position: relative;
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  #email {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  #password {
+    margin-bottom: -1px;
+    border-radius: 0;
+  }
+
+  #password-confirm {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+  }
+
+  .invalid {
+    border-color: red;
+  }
+
+  .invalid:focus {
+    border-color: red;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  }
+
+  .aside {
+    font-size: 60%;
+    text-align: right;
+    color: #555;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .jumbotron {
+    padding-bottom: 0 !important;
+    border-bottom-width: 0 !important;
+
+    .container {
+      padding: 0;
+
+      form {
+        max-width: 100%;
+        background-color: #f0f0f0;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

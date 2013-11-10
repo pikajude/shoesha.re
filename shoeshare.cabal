@@ -22,6 +22,7 @@ library
                      Settings.StaticFiles
                      Settings.Development
                      Handler.Home
+                     Handler.Join
                      Handler.Cop
                      Handler.Share
 

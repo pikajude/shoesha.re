@@ -7,3 +7,5 @@
 / HomeR GET
 /cop CopR GET
 /share ShareR GET
+
+/join JoinR GET POST

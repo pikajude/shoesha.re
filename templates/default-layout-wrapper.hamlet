@@ -20,5 +20,7 @@ $doctype 5
     <footer>
       <div .container>
         <p .pull-right>
-          <a href=# id=to-top>to top ↑
+          <a href=# id=to-top>
+            to top #
+            <span .glyphicon .glyphicon-circle-arrow-up>
         <p>#{extraCopyright extra}

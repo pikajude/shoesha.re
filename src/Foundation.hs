@@ -80,8 +80,8 @@ instance Yesod App where
             addScript $ StaticR js_application_js
             $(combineStylesheets 'StaticR
                 [ css_normalize_css
-                , css_bootstrap_css
-                , css_bootstrap_theme_css ])
+                , css_bootstrap_css ])
+                -- , css_bootstrap_theme_css ])
             $(widgetFile "default-layout")
 
         curRoute <- getCurrentRoute

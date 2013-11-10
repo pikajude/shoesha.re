@@ -1,71 +1,26 @@
 .jumbotron {
-  background: #35322D url(@{StaticR img_shoes_cropped_jpg}) no-repeat left bottom;
-  overflow: hidden;
-  padding: 300px 0;
-  background-size: auto 1100px;
-  margin-bottom: 0;
-  border-bottom: 1px solid #333;
-
   h1 {
     color: white;
-    background: rgba(0,0,0,0.2);
     border-radius: 4px;
     padding: 8px 15px;
     text-shadow: 0 2px 0 rgba(0,0,0,0.2);
 
-    a {
+    span {
       font-size: 50%;
-      color: yellow;
       display: block;
       line-height: 1.5em;
+
+      a {
+        color: yellow;
+      }
     }
-  }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .jumbotron {
-    background: #35322D url(@{StaticR img_shoes_cropped_2x_jpg}) no-repeat left bottom;
-    background-size: auto 1100px;
-  }
-}
-
-.subt {
-  background: #fafafa;
-  color: #777;
-  border-top: 1px solid white;
-  padding: 15px;
-}
-
-@media screen and (max-width: 991px) {
-  .jumbotron {
-    padding: 280px 0;
-    background-size: auto 1000px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .jumbotron {
-    background-size: auto 700px;
-    background-position: 0 -280px;
-    padding: 100px 0;
-
     h1 {
       text-align: center;
     }
-  }
-}
-
-@media screen and (max-width: 568px) {
-  .jumbotron {
-    background: #35322D url(@{StaticR img_shoes_tiny_jpg}) no-repeat left bottom;
-    background-size: 600px auto;
-  }
-}
-
-@media screen and (max-width: 568px) and (-webkit-min-device-pixel-ratio: 2),
-  screen and (max-width: 568px) and (min-resolution: 192dpi) {
-  .jumbotron {
-    background: #35322D url(@{StaticR img_shoes_tiny_2x_jpg}) no-repeat left bottom;
-    background-size: 600px auto;
   }
 }
