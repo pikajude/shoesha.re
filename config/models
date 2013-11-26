@@ -1,11 +1,10 @@
 User
   email Text
   ident Text
-  password Text
-  salt Text
+  password ByteString
   pudding PuddingType
   country CountryCode
-  verkey Text
+  verkey ByteString
   UniqueUser ident
   UniqueEmail email
   deriving Typeable Show

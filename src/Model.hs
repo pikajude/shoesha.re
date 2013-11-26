@@ -3,6 +3,7 @@ module Model where
 import Prelude
 import Yesod
 import Data.Text (Text)
+import Data.ByteString (ByteString)
 import Data.Fixed
 import Data.ISO3166_CountryCodes
 import Database.Persist.Quasi

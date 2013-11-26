@@ -1,0 +1,8 @@
+$newline never
+  <div .jumbotron>
+    <div .container>
+      <form .pill role=form method=post action="@{tm login}">
+        <h2>Log in
+        <input .form-control #email type=email name=email required placeholder=Email autofocus>
+        <input .form-control #password type=password name=password required placeholder=Password>
+        <input type=submit .btn .btn-success value="Go!">

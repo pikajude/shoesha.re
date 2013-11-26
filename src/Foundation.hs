@@ -9,19 +9,20 @@ import Yesod.Default.Util (addStaticContentExternal)
 import Network.HTTP.Conduit (Manager)
 import qualified Settings
 import Settings.Development (development)
+import Control.Applicative
 import Data.Maybe
 import Data.Text (Text)
+import qualified Data.Text.Encoding as T
 import Control.Monad (when)
+import Crypto.PasswordStore
 import qualified Database.Persist
 import Database.Persist.Sql (SqlPersistT)
 import Settings.StaticFiles
 import Settings (widgetFile, Extra (..))
 import Model
-import Model.User ()
 import Text.Jasmine (minifym)
 import Text.Hamlet (hamletFile)
 import System.Log.FastLogger (Logger)
-import Yesod.Auth.HashDB hiding (UniqueUser, UserId)
 
 -- | The site argument for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
@@ -139,10 +140,40 @@ instance YesodAuth App where
     -- Where to send a user after logout
     logoutDest _ = HomeR
 
-    getAuthId = getAuthIdHashDB AuthR (Just . UniqueUser)
+    getAuthId creds = do
+        muid <- maybeAuthId
+        case muid of
+            Just uid -> return $ Just uid
+            Nothing -> do
+                x <- case Just . UniqueEmail $ credsIdent creds of
+                         Nothing -> return Nothing
+                         Just u -> runDB (getBy u)
+                case x of
+                    Just (Entity uid _) -> return $ Just uid
+                    Nothing -> loginErrorMessage (AuthR LoginR) "User not found"
 
     -- You can add other plugins like BrowserID, email or OAuth here
-    authPlugins _ = [authHashDB (Just . UniqueUser)]
+    authPlugins _ = [AuthPlugin "hash" dispatch (\tm -> $(widgetFile "login-form"))] where
+        dispatch "POST" ["login"] = postLoginR >>= sendResponse
+        dispatch _ _ = notFound
+        login = PluginR "hash" ["login"]
+        postLoginR = do
+            (mu,mp) <- lift . runInputPost $ (,)
+                <$> iopt textField "email"
+                <*> iopt textField "password"
+
+            isValid <- lift $ fromMaybe (return False)
+                        (validateUser <$> (Just . UniqueEmail =<< mu) <*> (T.encodeUtf8 <$> mp))
+            if isValid
+                then lift . setCreds True $ Creds "hash" (fromMaybe "" mu) []
+                else loginErrorMessage LoginR "Invalid username/password"
+
+            where
+                validateUser userID passwd = do
+                    user <- runDB $ getBy userID
+                    case user of
+                        Nothing -> return False
+                        Just (Entity _ m) -> return $ verifyPassword passwd (userPassword m)
 
     authHttpManager = httpManager
 

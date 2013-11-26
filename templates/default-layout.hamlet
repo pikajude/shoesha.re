@@ -1,3 +1,10 @@
-$maybe msg <- mmsg
-    <div #message>#{msg}
 ^{widget}
+$maybe msg <- mmsg
+  <div #message>#{msg}
+<footer>
+  <div .container>
+    <p .pull-right>
+      <a href=# id=to-top>
+        to top #
+        <span .glyphicon .glyphicon-circle-arrow-up>
+    <p>#{extraCopyright extra}

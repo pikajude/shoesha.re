@@ -5,14 +5,16 @@ module Handler.Join where
 
 import Control.Arrow
 import Control.Monad
-import qualified Data.ByteString.Lazy as B
+import Crypto.PasswordStore
+import qualified Data.ByteString.Char8 as B
+import qualified Data.ByteString.Lazy.Char8 as B (fromStrict)
 import Data.Char
 import Data.ISO3166_CountryCodes
 import Data.Text (pack)
-import Data.Text.Encoding
-import Data.Digest.Pure.SHA
 import qualified Data.Text as T
+import qualified Data.Text.Encoding as T
 import Data.String
+import Data.Digest.Pure.SHA
 import Model.Types
 import System.IO
 import Text.Julius
@@ -30,13 +32,11 @@ postJoinR = do
     ((res, widget), enctype) <- runFormPost joinForm
     case res of
         FormSuccess person -> do
+            pw <- liftIO $ makePassword (userPassword person) 14
+            let newPerson = person { userPassword = pw }
             _ <- runDB (insert newPerson)
             setSession "email" (userEmail newPerson)
             redirect WelcomeR
-            where
-                concatted = encodeUtf8 $ userSalt person <> userPassword person
-                newPassword = T.pack . showDigest . sha1 $ B.fromStrict concatted
-                newPerson = person { userPassword = newPassword }
         _ -> defaultLayout $ do
            setTitle "try again"
            $(widgetFile "join")
@@ -48,7 +48,7 @@ joinForm ex = do
              (formControlAutofocus "Email")
              Nothing
     (passResult, passView) <-
-        mreq (checkBool ((>= 8) . T.length) ("Too short! (must be 8 or more characters)" :: Text)
+        mreq (checkBool ((>= 8) . B.length) ("Too short! (must be 8 or more characters)" :: Text)
                passwordConfirmField)
              (formControl "Password")
              Nothing
@@ -65,13 +65,12 @@ joinForm ex = do
         mreq (selectField countryOptions)
              selectOpts
              Nothing
-    (salt, verkey) <- liftIO $ withBinaryFile "/dev/urandom" ReadMode $ \h ->
-                join (liftM2 (,)) . fmap (T.pack . showDigest . sha1) $ B.hGet h 36
+    verkey <- liftIO $ withBinaryFile "/dev/urandom" ReadMode $ \h ->
+        B.pack . show . sha256 . B.fromStrict <$> B.hGet h 36
 
     let user = User <$> emailResult
                     <*> usernameResult
                     <*> passResult
-                    <*> pure salt
                     <*> puddingResult
                     <*> countryResult
                     <*> pure verkey
@@ -95,15 +94,15 @@ joinForm ex = do
                        $ optionsPairs $ map (pack . readableCountryName &&& id) [minBound..maxBound]
         nullOption = Option "Country of residence" AF "no country"
 
-passwordConfirmField :: Monad m => Field m Text
+passwordConfirmField :: Monad m => Field m B.ByteString
 passwordConfirmField = Field
     { fieldParse = \vals _ -> case vals of
-        [x, y] | x == y -> return $ Right (Just x)
+        [x, y] | x == y -> return . Right . Just $ T.encodeUtf8 x
                | otherwise -> return $ Left "Passwords don't match"
         [] -> return $ Right Nothing
         _ -> return $ Left "Incorrect number of results"
     , fieldView = \id' name attrs val' isReq ->
-        let val = case val' of Right e -> e; Left _ -> ""
+        let val = case val' of Right e -> T.decodeUtf8 e; Left _ -> ""
          in [whamlet|
         <label for=#{id'} .sr-only>Password
         <input ##{id'} name=#{name} value=#{val} *{attrs} type=password :isReq:required>
