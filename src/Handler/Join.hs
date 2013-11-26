@@ -32,10 +32,8 @@ postJoinR = do
     ((res, widget), enctype) <- runFormPost joinForm
     case res of
         FormSuccess person -> do
-            pw <- liftIO $ makePassword (userPassword person) 14
-            let newPerson = person { userPassword = pw }
-            _ <- runDB (insert newPerson)
-            setSession "email" (userEmail newPerson)
+            _ <- runDB (insert person)
+            setSession "email" (userEmail person)
             redirect WelcomeR
         _ -> defaultLayout $ do
            setTitle "try again"
@@ -94,10 +92,12 @@ joinForm ex = do
                        $ optionsPairs $ map (pack . readableCountryName &&& id) [minBound..maxBound]
         nullOption = Option "Country of residence" AF "no country"
 
-passwordConfirmField :: Monad m => Field m B.ByteString
+passwordConfirmField :: MonadIO m => Field m B.ByteString
 passwordConfirmField = Field
     { fieldParse = \vals _ -> case vals of
-        [x, y] | x == y -> return . Right . Just $ T.encodeUtf8 x
+        [x, y] | x == y -> do
+                    pw <- liftIO $ makePassword (T.encodeUtf8 x) 14
+                    return . Right $ Just pw
                | otherwise -> return $ Left "Passwords don't match"
         [] -> return $ Right Nothing
         _ -> return $ Left "Incorrect number of results"
