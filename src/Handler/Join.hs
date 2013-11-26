@@ -66,7 +66,7 @@ joinForm ex = do
              selectOpts
              Nothing
     verkey <- liftIO $ withBinaryFile "/dev/urandom" ReadMode $ \h ->
-        B.pack . show . sha256 . B.fromStrict <$> B.hGet h 36
+        B.pack . show . sha256 . B.fromStrict <$> B.hGet h 18
 
     let user = User <$> emailResult
                     <*> usernameResult
