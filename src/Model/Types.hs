@@ -192,7 +192,7 @@ instance Read PuddingType where
     readsPrec _ "Watalappam"                = [(Watalappam,"")]
     readsPrec _ "White pudding"             = [(WhitePudding,"")]
     readsPrec _ "Yorkshire pudding"         = [(YorkshirePudding,"")]
-    readsPrec _ s = "no read of " ++ s
+    readsPrec _ s = error $ "no read of " ++ s
 
 derivePersistField "PuddingType"
 
