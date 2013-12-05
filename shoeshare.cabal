@@ -79,6 +79,7 @@ library
                  , iso3166-country-codes
                  , pwstore-fast
                  , SHA
+                 , happy
 
 executable         shoeshare
     if flag(library-only)
